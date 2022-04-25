@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Add Course</title>
+</head>
+<style>
+    .go_back {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: absolute;
+        bottom: 90%;
+        right: 80%;
+        font-size: 13px;
+        text-decoration: none;
+        color: black;
+    }
+
+    .go_back:hover {
+        color: grey;
+    }
+
+    .add_course {
+        width: 400px;
+        height: 700px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 15px;
+    }
+
+    .site-form{
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        height: 550px;
+    }
+
+    input[type=text]{
+        margin-bottom: 10px;
+        border: none;
+        border-bottom: 2px solid grey;
+        font-size: 15px;
+        padding-bottom: 5px;
+    }
+
+    input[type=text]:focus{
+        outline: none;
+    }
+
+    input[type=submit]{
+        margin-top: 20px;
+        cursor: pointer;
+        border: none;
+        height: 35px;
+        border-radius: 40px;
+        background-image: linear-gradient(300deg, lightblue, cornflowerblue, indianred);
+    }
+
+    .site-form li{
+        opacity: 0.5;
+    }
+    .site-form label{
+        font-weight: bold;
+    }
+</style>
+<body style="height: 98vh;">
+
+  <nav>
+      <form class="logout-link" action="/courses/list/" method="post">
+         <a href="/courses/" class="go_back">
+              <i class="fa fa-chevron-left" aria-hidden="true"></i>
+              <h2 style="margin-left: 5px">go back</h2>
+          </a>
+      </form>
+  </nav>
+  <div class="add_course">
+    <h2 style="padding: 20px">Add a new Course</h2>
+    <form class="site-form" action="/courses/add/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Add">
+    </form>
+  </div>
+</body>
+</html>

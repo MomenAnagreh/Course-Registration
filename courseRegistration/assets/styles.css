@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to top right, lightblue, cornflowerblue, indianred, firebrick);
+}
+.tableContainer {
+    display: flex;
+    width: 900px;
+    height: 450px;
+    padding-top: 50px;
+    justify-content: center;
+}
+.tableStyle {
+    border: 2px solid black;
+    width: 70%;
+    height: 100%;
+}
+.tableColumn {
+    border: 1px solid black;
+}
+.tableRow {
+    border: 1px solid black;
+    padding-left: 10px;
+}

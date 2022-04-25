@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<style>
+    .title{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .logout-link {
+        display: flex;
+    }
+
+    .logout_button {
+        border-radius: 5px;
+        border: gray;
+        color: white;
+        height: 30px;
+        width: 60px;
+        cursor: pointer;
+        background-image: linear-gradient(300deg, lightblue, cornflowerblue);
+    }
+
+    .add_button {
+        border-radius: 5px;
+        border: gray;
+        color: white;
+        height: 30px;
+        width: 60px;
+        cursor: pointer;
+        background-image: linear-gradient(to top right, indianred, firebrick);
+    }
+
+    .name {
+        padding: 20px;
+        background-color: red;
+        background-image: linear-gradient(45deg, lightblue, cornflowerblue);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .add_class_title {
+        padding: 20px;
+        background-color: red;
+        background-image: linear-gradient(to top right, indianred, firebrick);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .add_class {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin: auto;
+        height: 40px;
+    }
+</style>
+<body style="flex-direction: column; height: 98vh">
+    <div class="title">
+        <h1 class="name">{{ user }}</h1>
+        <nav>
+          <form class="logout-link" action="/accounts/logout/" method="post">
+              {% csrf_token %}
+              <button class="logout_button" type="submit">logout</button>
+          </form>
+        </nav>
+    </div>
+    <h1 class="name" >Classes Schedule:</h1>
+    <div class="tableContainer" style="margin: auto; margin-top: 0px">
+        <table class="tableStyle">
+            <tr class="tableColumn">
+                <td class="tableRow">Class</td>
+                <td class="tableRow">Time</td>
+                <td class="tableRow">Day</td>
+                <td class="tableRow">Instructor</td>
+            </tr>
+            {% for course in courses %}
+                {% if course.student == user %}
+                    <tr class="tableColumn">
+                        <td class="tableRow">{{ course.title }}</td>
+                        <td class="tableRow">{{ course.time }}</td>
+                        <td class="tableRow">{{ course.day }}</td>
+                        <td class="tableRow">{{ course.instructor }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+    <div class="add_class">
+        <h2 class="add_class_title">Add a new Course: </h2>
+        <form class="site-form" action="/courses/add/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input class="add_button" type="submit" value="Add">
+        </form>
+    </div>
+</body>
+</html>

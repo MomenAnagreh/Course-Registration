@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Sign up</title>
+</head>
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 98vh;
+    width: 98%;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to top right, lightblue, cornflowerblue, indianred, firebrick);
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  /*padding: 12px 20px;*/
+  margin: 8px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid grey;
+  padding-top: 0;
+  padding-bottom: 10px;
+}
+
+input:focus{
+    outline: none;
+}
+
+input[type=submit]{
+    color: white;
+    padding: 10px 20px;
+    margin: 30px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 40px;
+    background-image: linear-gradient(300deg, lightblue, cornflowerblue, indianred);
+}
+
+
+/* Set a style for all buttons */
+button {
+  color: white;
+  padding: 10px 20px;
+  margin: 30px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 40px;
+  background-image: linear-gradient(300deg, lightblue, cornflowerblue, indianred);
+}
+
+.center {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    align-items: center;
+}
+
+label{
+    width: 500vh;
+}
+button:hover {
+  opacity: 0.8;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.psw {
+  float: right;
+  padding-top: 1px;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  /*background-color: #fefefe;*/
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  width: 70%; /* Could be more or less, depending on screen size */
+}
+
+.helptext {
+    display: flex;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.helptext li{
+    margin-bottom: 10px;
+}
+
+.modal-content label {
+    font-weight: bold;
+}
+
+.go_back {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    bottom: 90%;
+    right: 80%;
+    font-size: 13px;
+    text-decoration: none;
+    color: black;
+}
+
+.go_back:hover {
+    color: grey;
+}
+
+.errorlist li {
+    color: red;
+}
+</style>
+<body style="width: 98%">
+    <div class="center">
+          <nav>
+              <form class="logout-link" action="/" method="post">
+                 <a href="/" class="go_back">
+                      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                      <h2 style="margin-left: 5px">go back</h2>
+                  </a>
+              </form>
+          </nav>
+          <h1>Sign up</h1>
+          <form class="modal-content" action="/accounts/signup/" method="post">
+              {% csrf_token %}
+              {{ form }}
+              <input type="submit" value="Sign up">
+          </form>
+    </div>
+</body>
+</html>

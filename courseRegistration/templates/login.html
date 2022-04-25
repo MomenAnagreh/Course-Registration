@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet"
+          href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in</title>
+<title>Login Page</title>
+</head>
+<style>
+    body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to top right, lightblue, cornflowerblue, indianred, firebrick);
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid grey;
+}
+
+input:focus{
+    outline: none;
+}
+
+/* Set a style for all buttons */
+button {
+  color: white;
+  padding: 10px 20px;
+  margin: 30px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 40px;
+  background-image: linear-gradient(300deg, lightblue, cornflowerblue, indianred);
+}
+
+.center {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.psw {
+  float: right;
+  padding-top: 1px;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  width: 70%; /* Could be more or less, depending on screen size */
+}
+
+.errorlist {
+
+}
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+}
+</style>
+<body style="height: 98vh">
+    <div class="center animate">
+        <h2 style="margin: auto">Login</h2>
+        <div style="display: flex; flex-direction: column; align-items: center; height: 350px;
+            justify-content: space-between">
+          <form class="modal-content " method="post" >
+            <div class="container">
+<!--        <div style="font-size: 12px">-->
+<!--            <label id="uname"><b>Username</b></label>-->
+<!--            <i class="fa fa-user" style="padding-left: 5px"></i>-->
+<!--            <input id='username' type="text" placeholder="Enter Username" name="uname" required>-->
+<!--        </div>-->
+
+<!--        <div style="padding-top: 10px; font-size: 12px">-->
+<!--            <label id="psw"><b>Password</b></label>-->
+<!--            <i class="fa fa-lock" style="padding-left: 5px"></i>-->
+<!--            <input id='password' type="password" placeholder="Enter Password" name="psw" required>-->
+<!--        </div>-->
+<!--        <a class="psw" href="#">Forgot password?</a>-->
+
+
+<!--      <button type="button"-->
+<!--              onclick="login_fun(document.getElementById('username').value,-->
+<!--              document.getElementById('password').value)"-->
+<!--      >Login</button>-->
+              <form class="site-form" action="/accounts/login/" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    {% if request.GET.next %}
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+                    {% endif %}
+                    <button type="submit" style="width: 100px; align-self: center">login</button>
+              </form>
+            </div>
+          </form>
+        </div>
+        <p style="align-self: center; height: 10px">or</p>
+         <a href="/accounts/signup/" style="align-self: center;">
+            <button type="submit" style="width: 100px;">
+                Sign up
+            </button>
+          </a>
+    </div>
+</body>
+</html>
