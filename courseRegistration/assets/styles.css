@@ -9,7 +9,7 @@ body {
 }
 .tableContainer {
     display: flex;
-    width: 900px;
+    width: 90%;
     height: 450px;
     padding-top: 50px;
     justify-content: center;

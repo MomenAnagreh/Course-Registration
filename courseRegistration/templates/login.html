@@ -96,24 +96,6 @@ button:hover {
             justify-content: space-between">
           <form class="modal-content " method="post" >
             <div class="container">
-<!--        <div style="font-size: 12px">-->
-<!--            <label id="uname"><b>Username</b></label>-->
-<!--            <i class="fa fa-user" style="padding-left: 5px"></i>-->
-<!--            <input id='username' type="text" placeholder="Enter Username" name="uname" required>-->
-<!--        </div>-->
-
-<!--        <div style="padding-top: 10px; font-size: 12px">-->
-<!--            <label id="psw"><b>Password</b></label>-->
-<!--            <i class="fa fa-lock" style="padding-left: 5px"></i>-->
-<!--            <input id='password' type="password" placeholder="Enter Password" name="psw" required>-->
-<!--        </div>-->
-<!--        <a class="psw" href="#">Forgot password?</a>-->
-
-
-<!--      <button type="button"-->
-<!--              onclick="login_fun(document.getElementById('username').value,-->
-<!--              document.getElementById('password').value)"-->
-<!--      >Login</button>-->
               <form class="site-form" action="/accounts/login/" method="post">
                     {% csrf_token %}
                     {{ form }}
@@ -126,11 +108,11 @@ button:hover {
           </form>
         </div>
         <p style="align-self: center; height: 10px">or</p>
-         <a href="/accounts/signup/" style="align-self: center;">
+        <a href="/accounts/signup/" style="align-self: center;">
             <button type="submit" style="width: 100px;">
                 Sign up
             </button>
-          </a>
+        </a>
     </div>
 </body>
 </html>
